@@ -1,0 +1,18 @@
+//import Vue from 'vue'
+import { createApp } from "vue";
+import mitt from 'mitt'
+import App from './App.vue'
+
+/* Vue.config.productionTip = false
+
+new Vue({
+  render: h => h(App),
+  beforeCreate(){
+    Vue.prototype.$bus=this
+  }
+}).$mount('#app') */
+const emitter = mitt()
+const app = createApp(App);
+
+app.config.globalProperties.emitter = emitter
+app.mount("#app");
