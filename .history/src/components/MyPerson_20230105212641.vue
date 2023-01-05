@@ -1,0 +1,32 @@
+<template>
+    <div>
+        <h1>persons</h1>
+        <input type="text" placeholder="your name" v-model="name">
+        <button @click="add">add</button>
+        <ul>
+            <li v-for="p in personList" :key="p.id">{{p.name}}</li>
+        </ul>
+    </div>
+</template>
+
+<script>
+import { nanoid } from 'nanoid'
+export default {
+    name:'MyPerson',
+    data(){
+        return {
+            name:''
+        }
+    },
+    computed:{
+        personList() {
+            return this.$store.state.personList
+        }
+    },
+    methods:{
+        add() {
+            const personObj = {id:nanoid(),name:this.name}
+        }
+    }
+}
+</script>
